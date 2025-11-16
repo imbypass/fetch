@@ -13,14 +13,17 @@ wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t)
 wm=${wm##*WM_NAME = \"}
 wm=${wm%%\"*}
 
-r='\033[0;31m'
-g='\033[0;32m'
-b='\033[0;34m'
-c='\033[0;36m'
-y='\033[0;33m'
-m='\033[0;35m'
-w='\033[0;38m'
+s='\e[0;7m';  e='\e[0;m'; d='  ';
+r='\e[0;31m'; g='\e[0;32m'; b='\e[0;34m';
+c='\e[0;36m'; y='\e[0;33m'; m='\e[0;35m';
+f='\e[0;37m';
 
+rb='\e[0;41m'; gb='\e[0;42m'; bb='\e[0;44m';
+cb='\e[0;46m'; yb='\e[0;43m'; mb='\e[0;45m';
+
+w='\e[0;38m'; wb='\e[0;48m';
+
+colors="${f}${d}${r}${d}${y}${d}${g}${d}${b}${d}${c}${d}${m}${d}${w}"
 printf "
               ${r}wm   ${w}${wm}
    (\\ /)      ${y}kr   ${w}${kr}
@@ -28,4 +31,4 @@ printf "
    c(${r}\"${w})(${r}\"${w})    ${m}rs   ${w}${rs}
 
 "
-harmony-show-colors
+printf "$colors\n"
